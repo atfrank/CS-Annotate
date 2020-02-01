@@ -1,0 +1,10 @@
+Training features and testing features contain:
+
+N-3, N-2, N-1, N, N+1, N+2, N+3 chemical shift data (19 shifts) followed by 
+one-hot-encoded surrounding residue information (Either A, U, G, C, or unknown)
+
+Training target and test target contain:
+
+solvent exposure, adjacent stacking, non-adjacent stacking,  base-pairing, syn_anti, 
+pucker_C2p_endo, pucker_C3p_endo, pucker_C2p_exo, pucker_C3p_exo, pucker_C1p_exo, and pucker_C4p_exo (all binarily encoded)
+
