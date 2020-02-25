@@ -7,11 +7,11 @@ cd CS-Annotate/
 
 module load anaconda3/2019.10
 module load gcc/9.2.0
-conda create -n csannotate
-source activate csannotate
+conda create -n deepchem python=2.7
+source activate deepchem
 apt-get -qq install -y python-rdkit librdkit1 rdkit-data
 
-conda install -c conda-forge rdkit 
+conda install -c conda-forge rdkit  python=2.7
 
 pip install -q joblib sklearn tensorflow pillow deepchem
 

@@ -37,15 +37,15 @@ select_fingerprint = function(data, predicted = FALSE, names = c("sasa", "astack
   return(data)
 }
 
-generate_rna_maps = function(data, rna = "5KH8", width = 9, height = 9, pointsize = 10){
+generate_rna_maps = function(data, rna = "5KH8", cutoff = 0.60, width = 9, height = 9, pointsize = 10){
   # create maps for manuscript
   sub = get_data_for_rna(data, rna = rna)
-  pred = as.matrix(filter_pucker(select_fingerprint(sub, predicted = TRUE))>0.5)
+  pred = as.matrix(filter_pucker(select_fingerprint(sub, predicted = TRUE))>cutoff)
   pdf(file = sprintf("map_%s_predicted.pdf", rna), width = width, height = height, pointsize = pointsize)
   print(lattice::levelplot(pred, las = 2, ylab = "Features", xlab = "Residues", useRaster = FALSE, pretty = TRUE, at = seq(0, 1, 0.005), col.regions = cols2 <- colorRampPalette(c("black", "blue", "green", "yellow",  "red"))(256)))
   dev.off()
   
-  actual = as.matrix(select_fingerprint(sub, predicted = FALSE)>0.5)
+  actual = as.matrix(select_fingerprint(sub, predicted = FALSE)>cutoff)
   pdf(file = sprintf("map_%s_actual.pdf", rna), width = width, height = height, pointsize = pointsize)
   print(lattice::levelplot(actual, las = 2, ylab = "Features", xlab = "Residues", useRaster = FALSE, pretty = TRUE, at = seq(0, 1, 0.005), col.regions = cols2 <- colorRampPalette(c("black", "blue", "green", "yellow",  "red"))(256)))
   dev.off()
