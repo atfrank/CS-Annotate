@@ -10,6 +10,9 @@ module load gcc/9.2.0
 conda create -n csannotate
 source activate csannotate
 apt-get -qq install -y python-rdkit librdkit1 rdkit-data
+
+conda install -c conda-forge rdkit 
+
 pip install -q joblib sklearn tensorflow pillow deepchem
 
 # Get model
