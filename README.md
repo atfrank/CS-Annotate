@@ -2,7 +2,7 @@
  Chemical shift-based annotation of RNA structure
 
 # Install DeepChem
-git clone git@github.com:atfrank/CS-Annotate.git
+git clone https://github.com/atfrank/CS-Annotate.git
 cd CS-Annotate/
 
 module load anaconda3/2019.10
