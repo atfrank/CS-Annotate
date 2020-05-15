@@ -1,7 +1,7 @@
 setwd("~/Documents/GitHub/CS-Annotate/data/")
 
 # load data
-data = read.csv("deepchem_testset_predictions.txt", header = TRUE, sep = " ")
+data = read.csv("deepchem_testset_predictions_update_2N1Q.txt", header = TRUE, sep = " ")
 data$sasa = NULL 
 colnames(data)[colnames(data)=="sasa.1"] = "sasa"
 get_data_for_rna = function(data, rna = "5KH8"){
@@ -54,9 +54,9 @@ generate_rna_maps = function(data, rna = "5KH8", cutoff = 0.50, width = 9, heigh
   
   diff = abs(actual - pred)
   write.table(diff, paste0("diff_",rna,".csv"), col.names = T, row.names = F, quote = F)
-  #pdf(file = sprintf("map_%s_diff.pdf", rna), width = width, height = height, pointsize = pointsize)
-  #print(lattice::levelplot(diff, las = 2, ylab = "Features", xlab = "Residues", useRaster = FALSE, pretty = TRUE, at = seq(0, 1, 0.005), col.regions = cols2 <- colorRampPalette(c("black", "blue", "green", "yellow",  "red"))(256)))
-  #dev.off()
+  pdf(file = sprintf("map_%s_diff.pdf", rna), width = width, height = height, pointsize = pointsize)
+  print(lattice::levelplot(diff, las = 2, ylab = "Features", xlab = "Residues", useRaster = FALSE, pretty = TRUE, at = seq(0, 1, 0.005), col.regions = cols2 <- colorRampPalette(c("black", "blue", "green", "yellow",  "red"))(256)))
+  dev.off()
   
 }
 
