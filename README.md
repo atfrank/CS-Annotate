@@ -15,7 +15,7 @@ conda install -c conda-forge rdkit deepchem==2.3.0
 pip install tensorflow==1.14.0
 ```
 
-# deploy pre-trained model
+# Deploy pre-trained model
 ```
 python deploy.py -f data/test_deploy.csv
 ```
