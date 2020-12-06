@@ -5,7 +5,6 @@ import requests
 import io
 import argparse
 
-DIR_PATH = '/pylon5/mc5pksp/afrank2/cs-annotate/'
 RETAIN = ['id', 'resid', 'resname']
 RETAIN_NONAME = []
 
@@ -219,8 +218,12 @@ def get_test_from_file(input_file):
 
 if __name__ == "__main__":    
     parser = argparse.ArgumentParser()
-    parser.add_argument("-f","--infile", help="file chemical shift map")
-    parser.add_argument("-o","--outfile", help="file chemical shift map", default = "cs-annotate-predictions.txt")
+    parser.add_argument("-f","--infile", help="file chemical shift map", required = True)
+    parser.add_argument("-o","--outfile", help="file chemical shift map", default = "data/cs-annotate-predictions.txt")
+    parser.add_argument("-m","--model", help="path to saved model", default = "models/one-layer/")
+    parser.add_argument("-X","--Xtrain", help="X data used to train model", default = "data/train_features.csv")
+    parser.add_argument("-y","--ytrain", help="y data used to train model", default = "data/train_target.csv")
+    
     a = parser.parse_args()
     
     import rdkit as rd
@@ -231,8 +234,8 @@ if __name__ == "__main__":
     neighbors = 3
     
     # load train and test data
-    X_train = pd.read_csv(DIR_PATH+"train_features_"+str(neighbors)+".csv",delim_whitespace=True,header=0)
-    y_train = pd.read_csv(DIR_PATH+"train_target_"+str(neighbors)+".csv",delim_whitespace=True,header=0)
+    X_train = pd.read_csv(a.Xtrain,delim_whitespace=True,header=0)
+    y_train = pd.read_csv(a.ytrain,delim_whitespace=True,header=0)
     targets = y_train.columns
     
     # read in test data
@@ -262,7 +265,7 @@ if __name__ == "__main__":
     n_tasks = train_dataset_balanced.y.shape[1]
 
     # load model
-    model = dc.models.ProgressiveMultitaskClassifier(n_tasks=n_tasks,n_features=n_features,layer_sizes=[100],alpha_init_stddevs=0.04,learning_rate=0.001, model_dir=DIR_PATH+'model/', tensorboard=True, use_queue=False)
+    model = dc.models.ProgressiveMultitaskClassifier(n_tasks=n_tasks,n_features=n_features,layer_sizes=[100],alpha_init_stddevs=0.04,learning_rate=0.001, model_dir=a.model, tensorboard=True, use_queue=False)
     model.restore()
     
     # predict
