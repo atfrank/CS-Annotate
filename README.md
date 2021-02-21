@@ -27,7 +27,7 @@ python deploy.py -f data/test_deploy.csv
  * CS-Impute, which can be access via the Science Gateway, [SMALTR](http://smaltr.org/).
 
 # CS-Annotate via SMALTR
-* CS-Annotate can also be accessed via: [SMALTR[(http://smaltr.org/).
+* CS-Annotate can also be accessed via: [SMALTR](http://smaltr.org/).
 * Given input chemical shifts, the web-app first imputes missing chemical shift values and then feds the imputed data to the classifier to annotate structure.
 * A video demonstrating how to run CS-Annotate via SMALTR can be accessed using [this](https://youtu.be/ZfpxLe46SvE) link.
 
