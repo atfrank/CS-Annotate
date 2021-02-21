@@ -1,5 +1,5 @@
 # CS-Annotate
- Chemical shift-based annotation of RNA structure
+ Chemical Shift-Based Annotation of RNA Structure
 
 # Clone
 ```
