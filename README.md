@@ -23,8 +23,8 @@ python deploy.py -f data/test_deploy.csv
 # Caveat
 * The classifier expects that missing chemical shifts have been imputed. In the example above ``data/test_deploy.csv`` corresponded to chemical shift dataset in which all missing values were imputed
 * Missing chemical shifts can imputed using:
- * [CS2BPS](https://github.com/atfrank/CS2Structure/tree/master/cs2bps).
- * CS-Impute, which can be access via the Science Gateway, [SMALTR](http://smaltr.org/).
+  * [CS2BPS](https://github.com/atfrank/CS2Structure/tree/master/cs2bps)
+  * CS-Impute, which can be access via the Science Gateway, [SMALTR](http://smaltr.org/)
 
 # CS-Annotate via SMALTR
 * CS-Annotate can also be accessed via: [SMALTR](http://smaltr.org/).
